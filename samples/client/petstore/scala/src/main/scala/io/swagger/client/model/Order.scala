@@ -20,7 +20,17 @@ case class Order (
   quantity: Option[Integer] = None,
   shipDate: Option[Date] = None,
   // Order Status
-  status: Option[String] = None,
+  status: Option[Order.Status] = None,
   complete: Option[Boolean] = None
 )
 
+object Order {
+  type Status = Status.Value
+
+  object Status extends Enumeration {
+    val Placed = Value("placed")
+    val Approved = Value("approved")
+    val Delivered = Value("delivered")
+  }
+
+}
